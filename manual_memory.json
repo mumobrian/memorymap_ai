@@ -11,13 +11,13 @@
     ],
     "tasks": [
         {
-            "task": "",
+            "task": "CAT 2",
             "deadline": "2025-10-05 18:00",
             "added": "2025-10-01 20:42"
         },
         {
             "task": "assignment",
-            "deadline": "python memorymap_ai.py",
+            "deadline": "2025-10-0c 23:59",
             "added": "2025-10-01 20:45"
         }
     ]

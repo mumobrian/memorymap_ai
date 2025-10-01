@@ -1,0 +1,9 @@
+# Core dependencies
+openai>=1.0.0
+python-dotenv>=1.0.0
+
+# Optional (for saving/loading memory in JSON with datetime support)
+orjson>=3.9.0
+
+# Development tools (optional but helpful)
+black>=23.0  # code formatter

@@ -1,0 +1,24 @@
+{
+    "conversation": [
+        {
+            "role": "user",
+            "content": "add task"
+        },
+        {
+            "role": "user",
+            "content": "add task assignment"
+        }
+    ],
+    "tasks": [
+        {
+            "task": "",
+            "deadline": "2025-10-05 18:00",
+            "added": "2025-10-01 20:42"
+        },
+        {
+            "task": "assignment",
+            "deadline": "python memorymap_ai.py",
+            "added": "2025-10-01 20:45"
+        }
+    ]
+}

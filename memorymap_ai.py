@@ -1,5 +1,5 @@
 """
-🚀 MemoryMapAI – A Beginner’s Guide to Conversational Memory & Task Tracking
+ MemoryMapAI – A Beginner’s Guide to Conversational Memory & Task Tracking
 Using OpenAI for responses
 """
 
@@ -56,29 +56,29 @@ def manual_memory_chat(user_input, memory):
         }
         memory["tasks"].append(task)
         save_manual_memory(memory)
-        return f"✅ Task added: {task_name}"
+        return f" Task added: {task_name}"
 
     elif user_input.lower().startswith("view tasks"):
         if not memory["tasks"]:
-            return "⚠️ No tasks available."
+            return " No tasks available."
         task_list = "\n".join(
             [f"- {t['task']} (Deadline: {t['deadline']}, Added: {t['added']})"
              for t in memory["tasks"]]
         )
-        return f"📝 Your tasks:\n{task_list}"
+        return f" Your tasks:\n{task_list}"
 
     elif user_input.lower().startswith("delete task"):
         if not memory["tasks"]:
-            return "⚠️ No tasks to delete."
+            return " No tasks to delete."
         for i, t in enumerate(memory["tasks"], start=1):
             print(f"{i}. {t['task']}")
         choice = int(input("Enter task number to delete: "))
         if 1 <= choice <= len(memory["tasks"]):
             removed = memory["tasks"].pop(choice - 1)
             save_manual_memory(memory)
-            return f"🗑️ Task deleted: {removed['task']}"
+            return f" Task deleted: {removed['task']}"
         else:
-            return "⚠️ Invalid task number."
+            return " Invalid task number."
 
     # Normal chat with history
     response = client.chat.completions.create(
@@ -103,14 +103,14 @@ def langchain_memory_chat(user_input):
 
 # ====== Main App ======
 def main():
-    print("👋 Welcome to MemoryMapAI – Explore conversational memory with OpenAI")
+    print(" Welcome to MemoryMapAI – Explore conversational memory with OpenAI")
     print("Modes: \n1. Stateless \n2. Manual Memory \n3. LangChain Memory (simulated)\n")
 
     while True:
         mode = input("Choose mode (1-3) or 'exit' to quit: ")
 
         if mode == "exit":
-            print("👋 Goodbye! Memory saved.")
+            print(" Goodbye! Memory saved.")
             break
 
         user_input = input("You: ")
@@ -123,7 +123,7 @@ def main():
         elif mode == "3":
             reply = langchain_memory_chat(user_input)
         else:
-            reply = "⚠️ Invalid mode. Choose 1, 2, or 3."
+            reply = " Invalid mode. Choose 1, 2, or 3."
 
         print(f"AI: {reply}")
 

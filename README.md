@@ -132,97 +132,238 @@ Bot: Task added: 'Buy milk' with deadline: Tomorrow 5PM
 
 ## 6. AI Prompt Journal
 
-### Prompt 1: Designing a Beginner-Friendly Chatbot with Memory
-
-**Prompt:**
-I want to build a simple Python chatbot for my capstone project that starts in a stateless mode but then evolves to show memory management step by step.
-
-**AI Response Summary:**
-
-* Start with a stateless chat loop.
-* Add JSON-based persistence as a separate function.
-* Use descriptive function names like `chat_stateless` and `chat_with_manual_memory`.
-* Layer complexity gradually to help beginners.
-
-**Helpfulness:**  – The roadmap made it much easier to teach and document. I now have a clear beginner-to-intermediate learning ladder for my chatbot project. 
+# 📝 AI Prompt Journal
 
 ---
 
-### Prompt 2: Debugging Setup & Running the Code in VS Code
+## Prompt 1: Designing a Beginner-Friendly Chatbot with Memory
 
 **Prompt:**
-I installed Python and copied the chatbot code, but I’m running into issues like `ModuleNotFoundError: No module named 'openai'` and missing API keys.
+I want to build a simple Python chatbot for my capstone project that starts in a stateless mode but then evolves to show memory management step by step. I’m unsure how to structure my code in a way that beginners can understand while also leaving room to extend it.
+
+**My approach so far:**
+
+* Looked at basic chatbot tutorials using while True loops.
+* Noticed examples often skip over persistence or memory.
+* Identified JSON as a possible way to store conversation state.
+
+**Project structure (so far):**
+
+```
+memorymap_ai/
+├── memorymap_ai.py
+├── memory.json   (if used for storing memory)
+├── requirements.txt
+└── .env
+```
+
+**Questions I asked myself:**
+
+* Should I keep stateless and memory-based versions in the same script or split them into modules?
+* How do I name functions so they clearly reflect what they do?
+* What’s the best way for beginners to see the “before and after” of adding memory?
 
 **AI Response Summary:**
+The AI suggested starting with a very basic stateless chat loop, then adding JSON-based persistence as a separate function. It recommended descriptive function names like `chat_stateless` and `chat_with_manual_memory`. It emphasized that layering complexity helps beginners understand memory without being overwhelmed.
 
-* Create a virtual environment (`python -m venv venv`).
-* Activate inside VS Code.
-* Install dependencies (`pip install -r requirements.txt`).
-* Add `.env` with `OPENAI_API_KEY=...`.
-* Run with `python memorymap_ai.py`.
-
-**Helpfulness:** (9/10) Felt like a step-by-step troubleshooting guide. Very helpful, though I still had to figure out Windows vs. Linux activation on my own.
+**Helpfulness:**
+⭐ 10/10 – The roadmap made it much easier to teach and document. I now have a clear beginner-to-intermediate learning ladder for my chatbot project.
 
 ---
 
-### Prompt 3: Understanding a Java Project Structure
+## Prompt 2: Debugging Setup & Running the Code in VS Code
 
 **Prompt:**
-As a beginner Java developer, I see folders like `src/main/java`, `src/test/java`, and a `pom.xml` file.
+I installed Python and copied the chatbot code, but I’m running into issues like `ModuleNotFoundError: No module named 'openai'` and missing API keys. I need a beginner-friendly checklist to run this project smoothly in VS Code.
+
+**My approach so far:**
+
+* Installed Python from the official site.
+* Opened the project folder in VS Code.
+* Tried running the script directly with `python memorymap_ai.py`.
+* Saw multiple errors related to dependencies and `.env` configuration.
+
+**Project structure (at this point):**
+
+```
+memorymap_ai/
+├── memorymap_ai.py
+├── requirements.txt
+├── venv/  (virtual environment, after setup)
+└── .env
+```
+
+**Key problem areas I identified:**
+
+* Missing modules like `openai`.
+* Unsure how to activate the virtual environment in VS Code.
+* `.env` file not being recognized properly.
 
 **AI Response Summary:**
+The AI walked me through:
 
-* `src/main/java` → Application logic
-* `src/test/java` → Tests
-* `pom.xml` → Dependencies & build configuration
-* Entry point → `public static void main(String[] args)`
-* Maven automates dependency management.
+* Creating a virtual environment (`python -m venv venv`).
+* Activating it inside VS Code.
+* Installing dependencies (`pip install -r requirements.txt`).
+* Adding a `.env` file with `OPENAI_API_KEY=....`.
+* Running the app with `python memorymap_ai.py`.
 
-**Helpfulness:**  (9/10) Cleared up the Maven mystery and explained the folder structure well. Made me confident about where to place my main Java class.
+It also explained how to delete and regenerate broken JSON files if persistence fails.
+
+**Helpfulness:**
+⭐ 9/10 – Felt like a step-by-step troubleshooting guide. Very helpful, though I still had to figure out Windows vs. Linux activation on my own.
 
 ---
+
+## Prompt 3: Understanding a Java Project Structure
+
+**Prompt:**
+As a beginner Java developer, I see folders like `src/main/java`, `src/test/java`, and a `pom.xml` file, but I’m not sure where my code should go or how Maven fits into the build process.
+
+**My approach so far:**
+
+* Compared the folder structure to Python projects.
+* Looked inside `src/main/java` and saw empty packages.
+* Opened `pom.xml` but couldn’t make sense of all the XML tags.
+
+**Project structure (simplified):**
+
+```
+my_java_project/
+├── src/
+│   ├── main/java/   (application code)
+│   └── test/java/   (test cases)
+├── pom.xml
+└── target/          (auto-generated after build)
+```
+
+**Questions I asked myself:**
+
+* Should the entry point always go in `src/main/java`?
+* Does Maven automatically handle dependencies, or do I need to download JARs?
+* What role do plugins in `pom.xml` play?
+
+**AI Response Summary:**
+The AI explained that:
+
+* `src/main/java` is for application logic.
+* `src/test/java` is for tests.
+* `pom.xml` manages dependencies and build configuration.
+* The entry point is typically a class with `public static void main(String[] args)`.
+* It highlighted that Maven automates dependency management, so I don’t need to manually download JARs.
+
+**Helpfulness:**
+⭐ 9/10 – Cleared up the Maven mystery and explained the folder structure well. Made me confident about where to place my main Java class.
 
 ## 7. Common Issues & Fixes
 
 Like most real-world projects, my chatbot didn’t work flawlessly the first time. Here are common issues I faced and how I fixed them:
 
-### Issue 1: `ModuleNotFoundError: No module named 'openai'`
-
-* **Why:** Dependencies not installed in virtual environment.
-* **Fix:**
-
-  ```bash
-  venv\Scripts\activate   # Windows
-  source venv/bin/activate   # Mac/Linux
-  pip install -r requirements.txt
-  ```
-
-### Issue 2: `ValueError: OPENAI_API_KEY not found`
-
-* **Why:** `.env` file missing or misformatted.
-* **Fix:**
-
-  ```
-  OPENAI_API_KEY=sk-your-real-key-here
-  ```
-
-  (No spaces, no quotes)
-
-### Issue 3: `FileNotFoundError: memory.json not found`
-
-* **Why:** File doesn’t exist yet.
-* **Fix:** Create an empty file:
-
-  ```json
-  []
-  ```
-
-### Issue 4: `json.decoder.JSONDecodeError`
-
-* **Why:** `memory.json` got corrupted.
-* **Fix:** Delete or fix formatting, then restart program.
+# 🛠 Common Issues & Fixes
 
 ---
+
+## Issue 1: `ModuleNotFoundError: No module named 'openai'`
+
+**What happened:**
+When I first ran the program, Python complained that the `openai` module was missing.
+
+**Why:**
+Dependencies were not installed inside the virtual environment.
+
+**Fix:**
+Activate the virtual environment:
+
+* Windows:
+
+  ```bash
+  venv\Scripts\activate
+  ```
+* Mac/Linux:
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+Reinstall dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Issue 2: `FileNotFoundError: memory.json not found`
+
+**What happened:**
+The memory feature broke because the JSON file didn’t exist yet.
+
+**Why:**
+The program assumes `memory.json` is already there.
+
+**Fix:**
+Create an empty JSON file before first run:
+
+```json
+[]
+```
+
+Save it as `memory.json` in the project folder. From then on, the chatbot will update it automatically.
+
+---
+
+## Issue 3: `ValueError: OPENAI_API_KEY not found`
+
+**What happened:**
+The chatbot immediately failed with an API key error.
+
+**Why:**
+I had created a `.env` file, but the formatting was wrong (extra spaces, quotes, or missing altogether).
+
+**Fix:**
+Create a `.env` file in the root directory:
+
+```
+OPENAI_API_KEY=sk-your-real-key-here
+```
+
+Make sure there are **no spaces or quotes**.
+Restart the terminal so the environment variables reload.
+
+---
+
+## Issue 4: `json.decoder.JSONDecodeError`
+
+**What happened:**
+At some point, the chatbot crashed in the middle of saving, leaving `memory.json` corrupted.
+
+**Why:**
+The file contained half-written data or invalid JSON which is soo common in early development.
+
+**Fix:**
+
+* Open `memory.json` and check for missing brackets/commas.
+* If it’s beyond saving, delete it and let the program regenerate a fresh file.
+
+---
+
+## Issue 5: Bot Always Responds the Same Way
+
+**What happened:**
+No matter what I typed, the bot repeated the same answer.
+
+**Why:**
+I had accidentally hardcoded `"Hello"` instead of passing `user_input` into the API call.
+
+**Fix:**
+Check that you’re using:
+
+```python
+messages=[{"role": "user", "content": user_input}]
+```
+
+instead of any fixed text.
+
 
 ## 8. References
 
